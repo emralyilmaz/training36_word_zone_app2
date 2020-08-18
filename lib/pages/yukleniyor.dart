@@ -2,8 +2,7 @@
 // süre bitince istenilen sayfaya yönlendirilir.
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'dart:convert';
+import 'package:training36_word_zone_app2/services/world_time.dart';
 
 class Yukleniyor extends StatefulWidget {
   @override
@@ -11,32 +10,29 @@ class Yukleniyor extends StatefulWidget {
 }
 
 class _YukleniyorState extends State<Yukleniyor> {
-  void getZaman() async {
-    Response res =
-        await get("http://worldtimeapi.org/api/timezone/Europe/Istanbul");
-    Map veri = jsonDecode(res.body);
-    //  print(veri);
-    String dateTime = veri["datetime"];
-    DateTime now = DateTime.parse(dateTime);
-    // print(now);
-    String offset =
-        veri["utc_offset"].substring(1, 3); // 1. ile 3. indexler arasını alır.
-    // print(dateTime);
-    // print(offset);
-    now = now.add(Duration(hours: int.parse(offset)));
-    print(now);
+  String zaman = "Yükleniyor.";
+  void setupWorldTime() async {
+    WorldTime nesne =
+        WorldTime(konum: "Berlin", bayrak: "germany.png", url: "Europe/Berlin");
+
+    await nesne.getZaman();
+    //  print(nesne.zaman);
+
+    setState(() {
+      zaman = nesne.zaman;
+    });
   }
 
   @override
   void initState() {
-    getZaman();
+    setupWorldTime();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: Text("Yükleniyor")),
+      body: SafeArea(child: Text("$zaman")),
     );
   }
 }
