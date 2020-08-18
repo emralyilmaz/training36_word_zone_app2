@@ -17,9 +17,14 @@ class _YukleniyorState extends State<Yukleniyor> {
     Map veri = jsonDecode(res.body);
     //  print(veri);
     String dateTime = veri["datetime"];
-    String offset = veri["utc_offset"];
-    print(dateTime);
-    print(offset);
+    DateTime now = DateTime.parse(dateTime);
+    // print(now);
+    String offset =
+        veri["utc_offset"].substring(1, 3); // 1. ile 3. indexler arasını alır.
+    // print(dateTime);
+    // print(offset);
+    now = now.add(Duration(hours: int.parse(offset)));
+    print(now);
   }
 
   @override
