@@ -9,7 +9,16 @@ class _KonumState extends State<Konum> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: Text("Konum")),
+      backgroundColor: Color.fromRGBO(0, 223, 252, 1),
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(52, 56, 56, 1),
+        title: Text("Konum Seç"),
+        centerTitle: true,
+        elevation: 0.0,
+      ),
+      body: Center(
+        child: Text("Konum"),
+      ),
     );
   }
 }

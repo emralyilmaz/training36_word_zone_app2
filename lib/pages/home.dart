@@ -9,7 +9,19 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: Text("AnaSayfa")),
+      body: SafeArea(
+          child: Center(
+        child: Column(
+          children: [
+            FlatButton.icon(
+                onPressed: () {
+                  Navigator.pushNamed(context, "/konum");
+                },
+                icon: Icon(Icons.edit_location),
+                label: Text("Konum Düzenle"))
+          ],
+        ),
+      )),
     );
   }
 }
