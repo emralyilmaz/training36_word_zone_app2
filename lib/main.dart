@@ -5,7 +5,7 @@ import 'pages/home.dart';
 import 'package:training36_word_zone_app2/pages/konum_sec.dart';
 
 void main() => runApp(MaterialApp(
-      initialRoute: "/home",
+      initialRoute: "/",
       routes: {
         "/": (context) => Yukleniyor(),
         "/home": (context) => Home(),
