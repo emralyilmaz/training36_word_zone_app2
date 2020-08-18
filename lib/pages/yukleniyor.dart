@@ -11,18 +11,20 @@ class Yukleniyor extends StatefulWidget {
 }
 
 class _YukleniyorState extends State<Yukleniyor> {
-  void getVeri() async {
-    Response res = await get("https://jsonplaceholder.typicode.com/albums/2");
-    // print(res.body);
+  void getZaman() async {
+    Response res =
+        await get("http://worldtimeapi.org/api/timezone/Europe/Istanbul");
     Map veri = jsonDecode(res.body);
-    print(veri);
-    print(veri["userId"]);
-    print(veri["id"]);
+    //  print(veri);
+    String dateTime = veri["datetime"];
+    String offset = veri["utc_offset"];
+    print(dateTime);
+    print(offset);
   }
 
   @override
   void initState() {
-    getVeri();
+    getZaman();
     super.initState();
   }
 
