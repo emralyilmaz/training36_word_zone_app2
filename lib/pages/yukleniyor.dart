@@ -21,6 +21,12 @@ class _YukleniyorState extends State<Yukleniyor> {
     setState(() {
       zaman = nesne.zaman;
     });
+
+    Navigator.pushReplacementNamed(context, "/home", arguments: {
+      "konum": nesne.konum,
+      "bayrak": nesne.bayrak,
+      "zaman": nesne.zaman,
+    });
   }
 
   @override
@@ -32,7 +38,7 @@ class _YukleniyorState extends State<Yukleniyor> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: Text("$zaman")),
+      body: SafeArea(child: Text("Yükleniyor")),
     );
   }
 }

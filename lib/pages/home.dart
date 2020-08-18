@@ -6,8 +6,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  Map routeVeriler = {};
+
   @override
   Widget build(BuildContext context) {
+    routeVeriler = ModalRoute.of(context).settings.arguments;
+    // artık routeverilerin içerisinde yukleniyor.darttaki argumanlar var.
+    print(routeVeriler);
     return Scaffold(
       body: SafeArea(
           child: Center(
