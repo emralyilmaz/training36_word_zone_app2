@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:training36_word_zone_app2/services/world_time.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Yukleniyor extends StatefulWidget {
   @override
@@ -38,7 +39,13 @@ class _YukleniyorState extends State<Yukleniyor> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: Text("Yükleniyor")),
+      backgroundColor: Colors.blueAccent,
+      body: Center(
+        child: SpinKitWave(
+          color: Colors.orangeAccent,
+          size: 90,
+        ),
+      ),
     );
   }
 }
