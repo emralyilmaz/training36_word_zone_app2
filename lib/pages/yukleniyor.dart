@@ -27,6 +27,7 @@ class _YukleniyorState extends State<Yukleniyor> {
       "konum": nesne.konum,
       "bayrak": nesne.bayrak,
       "zaman": nesne.zaman,
+      "gunZaman": nesne.gunZaman
     });
   }
 
