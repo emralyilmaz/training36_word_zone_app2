@@ -11,7 +11,9 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    routeVeriler = ModalRoute.of(context).settings.arguments;
+    routeVeriler = routeVeriler.isNotEmpty
+        ? routeVeriler
+        : ModalRoute.of(context).settings.arguments;
     // artık routeverilerin içerisinde yukleniyor.darttaki argumanlar var.
     bgResim = routeVeriler["gunZaman"] ? "daytime.jpg" : "night.jpg";
     print(bgResim);
@@ -28,8 +30,19 @@ class _HomeState extends State<Home> {
           child: Column(
             children: [
               FlatButton.icon(
-                  onPressed: () {
-                    Navigator.pushNamed(context, "/konum");
+                  onPressed: () async {
+                    dynamic sonuc =
+                        await Navigator.pushNamed(context, "/konum");
+                    if (sonuc != null) {
+                      setState(() {
+                        routeVeriler = {
+                          "zaman": sonuc["zaman"],
+                          "konum": sonuc["konum"],
+                          "gunZaman": sonuc["gunZaman"],
+                          "bayrak": sonuc["bayrak"],
+                        };
+                      });
+                    }
                   },
                   icon: Icon(Icons.edit_location),
                   label: Text("Konum Düzenle",
